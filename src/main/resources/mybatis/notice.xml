@@ -101,14 +101,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET
 		title=#{title}, content=#{content}, wname=#{wname}
 		WHERE
-		noticeno=#{noticeno}
+		noticeno= #{noticeno}
 	</update>
 
 	<!-- 삭제 -->
 	<delete id="delete" parameterType="int">
-		DELETE FROM notice
-		WHERE
-		noticeno=#{noticeno};
+		delete from notice where noticeno = #{noticeno}
 	</delete>
 
 </mapper>

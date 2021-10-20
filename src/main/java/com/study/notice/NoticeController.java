@@ -27,13 +27,13 @@ public class NoticeController {
 	@Qualifier("com.study.notice.NoticeServiceImpl")
 	private NoticeService service;
 
-	@GetMapping("create") // 주로 읽어오는 내용 확인할때
+	@GetMapping("/notice/create") // 주로 읽어오는 내용 확인할때
 	public String create() {
 
-		return "/create";
+		return "/notice/create";
 	}
 
-	@PostMapping("create") // 생성 수정할때 많이 사용.
+	@PostMapping("/notice/create") // 생성 수정할때 많이 사용.
 	public String create(NoticeDTO dto) {
 
 		if (service.create(dto) == 1) {
@@ -44,7 +44,7 @@ public class NoticeController {
 
 	}
 
-	@RequestMapping("notice/list")
+	@RequestMapping("/notice/list")
 	public String list(HttpServletRequest request) {
 		// 검색관련------------------------
 		String col = Utility.checkNull(request.getParameter("col"));
@@ -62,7 +62,7 @@ public class NoticeController {
 		int recordPerPage = 3;// 한페이지당 보여줄 레코드갯수
 
 		// DB에서 가져올 순번-----------------
-		int sno = ((nowPage - 1) * recordPerPage);
+		int sno = ((nowPage - 1) * recordPerPage) + 1;
 		int eno = nowPage * recordPerPage;
 
 		Map map = new HashMap();
@@ -89,7 +89,7 @@ public class NoticeController {
 		return "/notice/list";
 	}
 
-	@GetMapping("notice/read")
+	@GetMapping("/notice/read")
 	public String read(int noticeno, Model model) {
 
 		service.upCnt(noticeno);
@@ -105,15 +105,15 @@ public class NoticeController {
 		return "/notice/read"; // tiles 리턴
 	}
 
-	@GetMapping("update")
+	@GetMapping("/notice/update")
 	public String update(int noticeno, Model model) {
 
 		model.addAttribute("dto", service.read(noticeno));
 
-		return "/update";
+		return "/notice/update";
 	}
 
-	@PostMapping("update")
+	@PostMapping("/notice/update")
 	public String update(NoticeDTO dto) {
 
 		Map map = new HashMap();
@@ -137,13 +137,13 @@ public class NoticeController {
 
 	}
 
-	@GetMapping("/delete")
+	@GetMapping("/notice/delete")
 	public String delete() {
 
-		return "/delete";
+		return "/notice/delete";
 	}
 
-	@PostMapping("/delete")
+	@PostMapping("/notice/delete")
 	public String delete(HttpServletRequest request, int noticeno, String passwd) {
 
 		Map map = new HashMap();
@@ -153,12 +153,11 @@ public class NoticeController {
 
 		int cnt = 0;
 		if (pcnt == 1) {
-
 			cnt = service.delete(noticeno);
 		}
 
 		if (pcnt != 1) {
-			return "./passwdError";
+			return "/notice/passwdError";
 		} else if (cnt == 1) {
 			return "redirect:./list";
 		} else {
