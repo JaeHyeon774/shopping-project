@@ -79,7 +79,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="${root}/member/mypage">Mypage</a></li>
 							<li><a href="${root}/review/list">Review</a></li>
-							<li><a href="#">Notice</a></li>
+							<li><a href="${root}/notice/list">Notice</a></li>
 							<li><a href="#">Q&A</a></li>
 						</ul></li>
 					<li><a id="grade"><span class="glyphicon glyphicon-grain"></span>
@@ -95,14 +95,11 @@
 						</c:when>
 						<c:when
 							test="${not empty sessionScope.id && sessionScope.grade == 'A'}">
-							<li><a href="${root}/admin/create"><span
-									class="glyphicon glyphicon-plus-sign"></span> 상품등록</a></li>
-							<li><a href="${root}/contents/list"><span
-									class="glyphicon glyphicon-list"></span> 상품목록</a></li>
-							<li><a href="${root}/admin/list"><span
-									class="glyphicon glyphicon-list"></span> 회원목록</a></li>
-							<li><a href="${root}/member/logout"><span
-									class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+							<li><a href="${root}/admin/create"><span class="glyphicon glyphicon-plus-sign"></span> 상품등록</a></li>
+							<li><a href="${root}/contents/list"><span class="glyphicon glyphicon-list"></span> 상품목록</a></li>
+							<li><a href="${root}/notice/create"><span class="glyphicon glyphicon-list"></span> 공지등록</a></li>
+							<li><a href="${root}/admin/list"><span class="glyphicon glyphicon-list"></span> 회원목록</a></li>
+							<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="${root}/member/update"><span
