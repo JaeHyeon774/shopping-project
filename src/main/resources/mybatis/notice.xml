@@ -5,37 +5,47 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.study.notice.NoticeMapper">
 	<!-- 등록 -->
 	<insert id="create" parameterType="com.study.notice.NoticeDTO">
-		INSERT INTO notice(noticeno, title,
+		INSERT INTO notice(noticeno,
+		title,
 		content, wname, passwd, cnt, rdate)
-		VALUES((select nvl(max(noticeno),0)+1 from notice), #{title}, #{content},
-		#{wname}, #{passwd}, 0,  sysdate)
+		VALUES((select
+		nvl(max(noticeno),0)+1 from notice), #{title}, #{content},
+		#{wname},
+		#{passwd}, 0, sysdate)
 	</insert>
 	<!-- 목록 -->
 	<select id="list" parameterType="Map"
 		resultType="com.study.notice.NoticeDTO">
-		SELECT noticeno, title, wname, cnt, rdate
-		FROM notice
-		<where>
-			<choose>
-				<when test="col=='wname'">
-					wname like CONCAT('%',#{word},'%')
-				</when>
-				<when test="col=='title'">
-					title like CONCAT('%',#{word},'%')
-				</when>
-				<when test="col=='content'">
-					content like CONCAT('%',#{word},'%')
-				</when>
-				<when test="col=='title_content'">
-					title like CONCAT('%',#{word},'%')
-					or
-					content like
-					CONCAT('%',#{word},'%')
-				</when>
-			</choose>
-		</where>
-		ORDER BY noticeno DESC
-		limit #{sno} , #{cnt}
+		select noticeno, title, wname, cnt, rdate, r
+			from (
+			select noticeno, title, wname, cnt, rdate, rownum r
+				from (
+				select noticeno, title, wname, cnt, rdate
+					from notice
+					<where>
+						<choose>
+						<when test="col=='wname'">
+							wname like '%'||#{word}||'%'
+						</when>
+						<when test="col=='title'">
+							title like '%'||#{word}||'%'
+						</when>
+						<when test="col=='content'">
+							content like '%'||#{word}||'%'
+						</when>
+						<when test="col=='title_content'">
+							title like '%'||#{word}||'%'
+							or
+							content like
+							'%'||#{word}||'%'
+						</when>
+					</choose>
+				</where>
+				ORDER BY noticeno DESC
+			)
+		<![CDATA[       
+         )where r >= #{sno} and r <= #{eno}
+     	]]>
 	</select>
 	<!--total -->
 	<select id="total" resultType="int" parameterType="Map">
@@ -78,9 +88,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 패스워드 검사 -->
 	<select id="passwd" resultType="int" parameterType="HashMap">
-		SELECT COUNT(*) AS cnt
+		SELECT
+		COUNT(*) AS cnt
 		FROM notice
-		WHERE noticeno=#{noticeno} AND passwd=#{passwd}
+		WHERE noticeno=#{noticeno} AND
+		passwd=#{passwd}
 	</select>
 
 	<!-- 수정 -->

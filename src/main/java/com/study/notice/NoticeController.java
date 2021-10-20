@@ -63,12 +63,13 @@ public class NoticeController {
 
 		// DB에서 가져올 순번-----------------
 		int sno = ((nowPage - 1) * recordPerPage);
-		// int eno = nowPage * recordPerPage;
+		int eno = nowPage * recordPerPage;
 
 		Map map = new HashMap();
 		map.put("col", col);
 		map.put("word", word);
 		map.put("sno", sno);
+		map.put("eno", eno);
 		map.put("cnt", recordPerPage);
 
 		int total = service.total(map);
@@ -85,10 +86,10 @@ public class NoticeController {
 		request.setAttribute("paging", paging);
 
 		// view페이지 리턴
-		return "/list";
+		return "/notice/list";
 	}
 
-	@GetMapping("/read")
+	@GetMapping("notice/read")
 	public String read(int noticeno, Model model) {
 
 		service.upCnt(noticeno);
@@ -101,7 +102,7 @@ public class NoticeController {
 
 		model.addAttribute("dto", dto);
 
-		return "/read"; // tiles 리턴
+		return "/notice/read"; // tiles 리턴
 	}
 
 	@GetMapping("update")

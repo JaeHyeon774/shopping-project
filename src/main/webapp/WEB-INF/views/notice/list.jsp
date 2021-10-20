@@ -10,7 +10,7 @@
 <meta charset="utf-8">
 <script type="text/javascript">
      function read(noticeno){
-       var url = "read";
+       var url = "notice/read";
        url += "?noticeno="+noticeno;
        url += "&col=${col}";
        url += "&word=${word}";
