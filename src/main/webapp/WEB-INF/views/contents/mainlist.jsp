@@ -30,7 +30,7 @@
     </div>
     </c:forEach>
 </div>
- <div class="row">
+<div class="row">
     <c:forEach var="dto" begin="4" end="7" items="${list}">
     <div class="col-sm-3">
       <h3>Vintage Skinny</h3>

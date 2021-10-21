@@ -104,7 +104,7 @@
 							<li><a href="${root}/member/update"><span
 									class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 							<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
-							<li><a href="${root}/member/basket"><span class="glyphicon glyphicon-edit"></span> 장바구니</a></li>
+							<li><a href="${root}/order/basket"><span class="glyphicon glyphicon-edit"></span> 장바구니</a></li>
 							<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>
