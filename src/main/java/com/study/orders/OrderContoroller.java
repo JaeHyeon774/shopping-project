@@ -1,13 +1,19 @@
 package com.study.orders;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class OrderContoroller {
-
-	@RequestMapping("/order/basket")
-	public String basket() {
-		return "/order/basket";
+	@Autowired
+	@Qualifier("com.study.orders.OrderServiceImpl")
+	private OrderService service;
+	
+	@GetMapping("/orders/buy")
+	public String create() {
+		return "/orders/buy";
 	}
 }

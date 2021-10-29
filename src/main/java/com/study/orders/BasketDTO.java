@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class BasketDTO {
 	private int orderno;
-	private String mname;
 	private String id;
+	private String mname;
 	private String fileName;
 	private String detail;
 	private int price;

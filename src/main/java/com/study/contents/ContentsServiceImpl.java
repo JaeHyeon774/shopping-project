@@ -12,6 +12,13 @@ public class ContentsServiceImpl implements ContentsService {
 	private ContentsMapper mapper;
 
 	@Override
+	public ContentsDTO detail(int contentsno) {
+		// TODO Auto-generated method stub
+		return mapper.detail(contentsno);
+	}
+
+
+	@Override
 	public int create(ContentsDTO dto) {
 		// TODO Auto-generated method stub
 		return mapper.create(dto);
@@ -40,13 +47,7 @@ public class ContentsServiceImpl implements ContentsService {
 		// TODO Auto-generated method stub
 		return mapper.updateFile(map);
 	}
-
-	@Override
-	public ContentsDTO detail(int contentsno) {
-		// TODO Auto-generated method stub
-		return mapper.detail(contentsno);
-	}
-
+	
 	@Override
 	public List<Map> getCategory() {
 		// TODO Auto-generated method stub

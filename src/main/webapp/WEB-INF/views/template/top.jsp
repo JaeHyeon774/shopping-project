@@ -20,12 +20,9 @@
 <title>memo</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <style type="text/css">
 #grade {
 	color: white;
@@ -80,7 +77,7 @@
 							<li><a href="${root}/member/mypage">Mypage</a></li>
 							<li><a href="${root}/review/list">Review</a></li>
 							<li><a href="${root}/notice/list">Notice</a></li>
-							<li><a href="#">Q&A</a></li>
+							<li><a href="${root}/chatting/naver_chatting">Q&A</a></li>
 						</ul></li>
 					<li><a id="grade"><span class="glyphicon glyphicon-grain"></span>
 							${str}</a></li>
@@ -101,10 +98,8 @@
 							<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 						</c:when>
 						<c:otherwise>
-							<li><a href="${root}/member/update"><span
-									class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+							<li><a href="${root}/order/basket"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
 							<li><a href="${root}/member/update"><span class="glyphicon glyphicon-edit"></span> 회원수정</a></li>
-							<li><a href="${root}/order/basket"><span class="glyphicon glyphicon-edit"></span> 장바구니</a></li>
 							<li><a href="${root}/member/logout"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>

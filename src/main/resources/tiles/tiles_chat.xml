@@ -2,12 +2,10 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
- 
+
 <tiles-definitions>
-    
-    <definition name="/order/buy" extends="main"> 
-            <put-attribute name="title" value="상품등록" ></put-attribute> 
-            <put-attribute name="body" value="/WEB-INF/views/order/buy.jsp" /> 
-    </definition>
-    
+	<definition name="/naver_chatting" extends="main">
+		<put-attribute name="title" value="기본페이지"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/chatting/naver_chatting.jsp" />
+	</definition>
 </tiles-definitions>

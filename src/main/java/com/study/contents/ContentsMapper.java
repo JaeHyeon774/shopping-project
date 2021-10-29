@@ -5,6 +5,8 @@ import java.util.Map;
 
 public interface ContentsMapper {
 
+	ContentsDTO detail(int contentsno);
+
 	int create(ContentsDTO dto);
 
 	int update(ContentsDTO dto);
@@ -14,8 +16,6 @@ public interface ContentsMapper {
 	List<ContentsDTO> list(Map map);
 
 	int updateFile(Map map);
-
-	ContentsDTO detail(int contentsno);
 	
 	List<Map> getCategory();
 	
