@@ -48,6 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</choose>
 		</where>
 	</select>
+	
 	<select id="list" parameterType="Map"
 		resultType="com.study.member.MemberDTO">
 		SELECT id, mname, tel, email, zipcode, address1, address2,

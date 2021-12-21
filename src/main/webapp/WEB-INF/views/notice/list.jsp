@@ -53,10 +53,9 @@
 			<thead>
 				<tr>
 					<th>번호</th>
-					<th>제목</th>
-					<th>작성자</th>
+					<th>일정 일므</th>
+					<th>일정 기간</th>
 					<th>등록날짜</th>
-					<th>조회수</th>
 				</tr>
 			</thead>
 			<tbody>

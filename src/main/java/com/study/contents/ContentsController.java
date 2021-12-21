@@ -39,10 +39,11 @@ public class ContentsController {
 	}
 	
 	@PostMapping("/contents/updateFile")
-	public String updateFile(MultipartFile filenameMF, String oldfile, int contentsno, HttpServletRequest request)
-			throws IOException {
-		String basePath = new ClassPathResource("/static/pstorage").getFile().getAbsolutePath();
+	public String updateFile(MultipartFile filenameMF, String oldfile, int contentsno, HttpServletRequest request){
+		//String basePath = new ClassPathResource("/static/pstorage").getFile().getAbsolutePath();
 
+		String basePath = Contents.getUploadDir();
+		
 		if (oldfile != null && !oldfile.equals("default.jpg")) { // 원본파일 삭제
 			Utility.deleteFile(basePath, oldfile);
 		}
@@ -138,9 +139,11 @@ public class ContentsController {
 	}
 
 	@PostMapping("/contents/create")
-	public String create(ContentsDTO dto, HttpServletRequest request) throws IOException {
-		String upDir = new ClassPathResource("/static/pstorage").getFile().getAbsolutePath();
+	public String create(ContentsDTO dto, HttpServletRequest request){
+		//String upDir = new ClassPathResource("/static/pstorage").getFile().getAbsolutePath();
 
+		String upDir = Contents.getUploadDir();
+		
 		String fname = Utility.saveFileSpring(dto.getFilenameMF(), upDir);
 		int size = (int) dto.getFilenameMF().getSize();
 
